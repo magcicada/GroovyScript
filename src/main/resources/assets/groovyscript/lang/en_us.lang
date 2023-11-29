@@ -19,7 +19,6 @@ groovyscript.recipe.piston_push.min_level=Min harvest level: %d
 groovyscript.recipe.chance_produce=§2%s§7 chance to produce output
 groovyscript.recipe.chance_consume=§2%s§7 chance to get consumed
 
-
 # Wiki
 groovyscript.wiki.categories=Categories
 groovyscript.wiki.subcategories_count=Has %s subcategories.
@@ -1193,3 +1192,8 @@ groovyscript.wiki.woot.stygianironanvil.note1=While more than 6 items can functi
 groovyscript.wiki.woot.stygianironanvil.base.value=Sets the itemstack used for the base
 groovyscript.wiki.woot.stygianironanvil.preserveBase.value=Sets if the base is used as a catalyst and not consumed
 groovyscript.wiki.woot.stygianironanvil.removeByBase=Removes all recipes that match the given base item
+
+groovyscript.packmode.normal.name=Normal
+groovyscript.packmode.normal.description=A normal pack mode. Nothing special.
+groovyscript.packmode.hard.name=Hard
+groovyscript.packmode.hard.description=Hard mode. Everything requires at least 50 diamonds and nether stars.

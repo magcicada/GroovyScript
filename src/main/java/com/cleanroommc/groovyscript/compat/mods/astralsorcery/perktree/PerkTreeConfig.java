@@ -9,7 +9,12 @@ import com.cleanroommc.groovyscript.core.mixin.astralsorcery.PerkLevelManagerAcc
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import groovy.lang.Closure;
 import hellfirepvp.astralsorcery.common.constellation.perk.PerkLevelManager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.storage.loot.LootContext;
 import org.jetbrains.annotations.ApiStatus;
+
+import java.util.Arrays;
+import java.util.Random;
 
 @RegistryDescription
 public class PerkTreeConfig extends VirtualizedRegistry<Closure<Long>> {
@@ -26,11 +31,8 @@ public class PerkTreeConfig extends VirtualizedRegistry<Closure<Long>> {
 
     @MethodDescription(example = @Example(value = "{ int i, long prev -> prev + 1000L + MathHelper.lfloor(Math.pow(2.0, i / 2.0F + 3)) }", imports = "net.minecraft.util.math.MathHelper"), type = MethodDescription.Type.VALUE)
     public void setXpFunction(Closure<Long> func) {
-        if (func != null) {
-            if (func.getParameterTypes().length != 2 || func.getParameterTypes()[0] != int.class || func.getParameterTypes()[1] != long.class) {
-                GroovyLog.msg("Astral Perk xp function requires a closure with exactly two parameters: int levelNumber, long previousLevelXp in that order.").error().post();
-                return;
-            }
+        if (!Arrays.equals(func.getParameterTypes(), new Class[]{int.class, long.class})) {
+            GroovyLog.msg("Warning: Astral Perk xp closures must take the following parameters (int levelNumber, long previousLevelXp)").debug().post();
         }
         this.xpFunction = func;
         ((PerkLevelManagerAccessor) PerkLevelManager.INSTANCE).getLevelMap().clear();
